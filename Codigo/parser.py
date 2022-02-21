@@ -87,6 +87,158 @@ def checkDefvar(listaPalabras):
     else:
         return 0
 
+def checkEq(listaPalabras):
+    if len(listaPalabras) == 3:
+        nombre = listaPalabras[1]
+        numero = listaPalabras[2]
+        if nombre in variables:
+            ultimoChar = numero[-1]
+            if ultimoChar == ")":
+                numero = numero[:len(numero)-1]
+                if numero.isnumeric():
+                    return 1
+                else:
+                    return 0
+            else:
+                return 0
+        else:
+            return 0
+    else:
+        return 0
+
+def checkMove(listaPalabras):
+    if len(listaPalabras) == 2:
+        numero = listaPalabras[1]
+        ultimoChar = numero[-1]
+        if ultimoChar == ")":
+            numero = numero[:len(numero)-1]
+            if numero.isnumeric():
+                return 1
+            elif numero in variables:
+                return 1
+            else:
+                return 0
+        else:
+            return 0
+    else:
+        return 0
+
+def checkTurn(listaPalabras):
+    if len(listaPalabras) == 2:
+        direccion = listaPalabras[1]
+        ultimoChar = direccion[-1]
+        if ultimoChar == ")":
+            direccion = direccion[:len(direccion)-1]
+            if direccion == ":left" or direccion == ":right" or direccion == ":around":
+                return 1
+            else:
+                return 0
+        else:
+            return 0
+    else:
+        return 0
+
+def checkFace(listaPalabras):
+    if len(listaPalabras) == 2:
+        orientacion = listaPalabras[1]
+        ultimoChar = orientacion[-1]
+        if ultimoChar == ")":
+            orientacion = orientacion[:len(orientacion)-1]
+            if orientacion == ":north" or orientacion == ":south" or orientacion == ":east" or orientacion == ":west":
+                return 1
+            else:
+                return 0
+        else:
+            return 0
+    else:
+        return 0
+
+def checkPut(listaPalabras):
+    if len(listaPalabras) == 3:
+        objeto = listaPalabras[1]
+        if objeto == "Balloons" or objeto == "Chips":
+            numero = listaPalabras[2]
+            ultimoChar = numero[-1]
+            if ultimoChar == ")":
+                numero = numero[:len(numero)-1]
+                if numero.isnumeric():
+                    return 1
+                elif numero in variables:
+                    return 1
+                else:
+                    return 0
+            else:
+                return 0
+        else:
+            return 0
+    else:
+        return 0
+
+def checkPick(listaPalabras):
+    if len(listaPalabras) == 3:
+        objeto = listaPalabras[1]
+        if objeto == "Balloons" or objeto == "Chips":
+            numero = listaPalabras[2]
+            ultimoChar = numero[-1]
+            if ultimoChar == ")":
+                numero = numero[:len(numero)-1]
+                if numero.isnumeric():
+                    return 1
+                elif numero in variables:
+                    return 1
+                else:
+                    return 0
+            else:
+                return 0
+        else:
+            return 0
+    else:
+        return 0
+
+def checkMoveDir(listaPalabras):
+    if len(listaPalabras) == 3:
+        numero = listaPalabras[1]
+        if numero in variables or numero.isnumeric():
+            direccion = listaPalabras[2]
+            ultimoChar = direccion[-1]
+            if ultimoChar == ")":
+                direccion = direccion[:len(direccion)-1]
+                if direccion == ":front" or direccion == ":right" or direccion == ":left" or direccion == ":back":
+                    return 1
+                else:
+                    return 0
+            else:
+                return 0
+        else:
+            return 0
+    else:
+        return 0
+
+def checkRunDirs(listaPalabras):
+    longitudLista = len(listaPalabras)
+
+def checkMoveFace(listaPalabras):
+    if len(listaPalabras) == 3:
+        numero = listaPalabras[1]
+        if numero.isnumeric() or numero in variables:
+            orientacion = listaPalabras[2]
+            ultimoChar = orientacion[-1]
+            if ultimoChar == ")":
+                orientacion = orientacion[:len(orientacion)-1]
+                if orientacion == ":north" or orientacion == ":south" or orientacion == ":west" or orientacion == ":east":
+                    return 1
+                else:
+                    return 0
+            else:
+                return 0
+        else:
+            return 0
+    else:
+        return 0
+
+
+
+
 reservadas = ["defvar","=","move","turn","face","put","pick","move-dir","run-dirs","move-face","(skip)",
                "(defvar","(=","(move","(turn","(face","(put","(pick","(move-dir","(run-dirs","(move-face"]
 
