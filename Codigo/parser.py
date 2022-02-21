@@ -15,5 +15,11 @@ def main(archivo):
 
     print(respuesta)
         
-        
+def check(linea):
+    cadena = linea.
+
+variables = {}
+
+funciones = {}
+
 main(archivo)
