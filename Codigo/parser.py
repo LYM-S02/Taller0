@@ -1,9 +1,20 @@
-from sympy import prime
+
 import config as cf
 
 archivo = open(cf.data_dir + 'pruebaLinea.txt',encoding="utf-8" )
 
+reservadas = ["defvar","=","move","turn","face","put","pick","move-dir","run-dirs","move-face","(skip)",
+               "(defvar","(=","(move","(turn","(face","(put","(pick","(move-dir","(run-dirs","(move-face"]
+
+variables = []
+
+funciones = []
+
+parentesis = {"(": 0 , ")": 0 }
+
+
 def main(archivo):
+
     for linea in archivo:
         respuesta = False
         checkLine = check(linea)
@@ -75,7 +86,7 @@ def checkDefvar(listaPalabras):
             if ultimoChar == ")":
                 numero = numero[:len(numero)-1]
                 if numero.isnumeric():
-                    variables += [nombre]
+                    variables.append(nombre)
                     return 1
                 else:
                     return 0
@@ -237,15 +248,5 @@ def checkMoveFace(listaPalabras):
         return 0
 
 
-
-
-reservadas = ["defvar","=","move","turn","face","put","pick","move-dir","run-dirs","move-face","(skip)",
-               "(defvar","(=","(move","(turn","(face","(put","(pick","(move-dir","(run-dirs","(move-face"]
-
-variables = []
-
-funciones = []
-
-parentesis = {"(": 0 , ")": 0 }
 
 main(archivo)
